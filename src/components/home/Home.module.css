@@ -1,0 +1,17 @@
+.boards{
+    padding: 10px;
+    background-color: rgb(236, 104, 104);
+    
+}
+a{
+    color: black;
+}
+.boardsList{
+    list-style: none;
+    display: flex;
+    background-color: cornflowerblue;
+
+}
+.test{
+    color: chartreuse;
+}

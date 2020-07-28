@@ -1,0 +1,14 @@
+.Navbar{
+    background-color: blue;
+    padding: 20px;
+}
+.NavMenu{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content:flex-end;
+
+}
+.menuItem{
+margin-right: 30px;
+}

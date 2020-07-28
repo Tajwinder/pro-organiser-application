@@ -1,0 +1,21 @@
+li{
+    padding: 10px;
+    background-color: rgb(235, 231, 231);
+    margin: 10px;
+}
+a{
+    color: black;
+}
+ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.inner-ul{
+    padding: 0;
+}
+.inner-ul li{
+    background-color: white;
+    color: black;
+}
