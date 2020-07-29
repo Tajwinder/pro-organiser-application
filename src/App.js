@@ -14,7 +14,7 @@ export default function App(){
         <HashRouter>
          <div>
             <Navbar/>
-            <div> Here is the Latest React version: <strong>{React.version}</strong></div>    
+               
             <Switch>
             <Route path='/' exact component={Home}/>
                

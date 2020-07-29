@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import Axios from 'axios';
 import AddCardModel from '../addCardModel/AddCardModel';
 import RenderCards from '../renderCards/RenderCards';
+import styles from './Columns.module.css'
 
 const Columns=(props)=>{
 
@@ -59,8 +60,9 @@ const Columns=(props)=>{
                 
                 columns.map((obj)=>(
                     <>
-                    <li>
-                        {obj.name}<br/><br/>
+                    <li className={styles.column}>
+
+                        <div className={styles.columnName}>{obj.name}</div>
                         <RenderCards boardId={props.boardId} columnId={obj.key} />
                         {/* {(obj['cards']===undefined)?null:(
                             <ul className="inner-ul">
@@ -79,7 +81,7 @@ const Columns=(props)=>{
                     } */}
                            
                        
-                        <button className='addCard' onClick={()=>addCardHandler(obj.key)}>Add a card</button>
+                        <div className={styles.addCard} onClick={()=>addCardHandler(obj.key)}>Add a card</div>
 
                     </li>
                     

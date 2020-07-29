@@ -1,7 +1,20 @@
-.boards{
-    padding: 10px;
-    background-color: rgb(236, 104, 104);
-    
+.board{
+    /* padding: 30px 50px; */
+   width:200px;
+   padding: 20px 0;
+   text-align: center;
+   background-color: white;
+   border: 1px solid rgb(224, 222, 222);
+   border-radius: 5px;
+   cursor: pointer;
+   margin: 3px; 
+    box-shadow: 3px 3px 5px rgb(168, 167, 167);;
+}
+.board:hover{
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    box-shadow: none;
 }
 a{
     color: black;
@@ -9,9 +22,10 @@ a{
 .boardsList{
     list-style: none;
     display: flex;
-    background-color: cornflowerblue;
+    padding: 0;
+    
 
 }
 .test{
-    color: chartreuse;
+    color: blue;
 }

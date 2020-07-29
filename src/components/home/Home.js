@@ -56,7 +56,9 @@ class Home extends Component {
                 { this.state.boards.map(
                     (obj)=>(
                         // console.log(obj)
-                        <li className={styles.board}><button onClick={()=>this.setState({boardDetails:true, boardId:obj.key})}>{obj.name}</button></li>
+                        <li className={styles.board}
+                           onClick={()=>this.setState({boardDetails:true, boardId:obj.key})}>{obj.name}
+                            </li>
                     )
                 )
                     }

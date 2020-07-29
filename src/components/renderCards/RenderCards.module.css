@@ -1,4 +1,9 @@
 .card{
-    background-color: black;
-    color:white
+   background-color: white;
+   border-radius: 5px;
+}
+
+.cardsList{
+    display: block;
+    padding: 0px;
 }

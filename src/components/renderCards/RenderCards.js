@@ -44,7 +44,7 @@ const RenderCards=(props)=>{
 
      return (
         <div>
-            <ul >
+            <ul className={styles.cardsList} >
             {
                 
                 
