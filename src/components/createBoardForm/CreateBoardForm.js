@@ -18,8 +18,12 @@ class CreateBoardForm extends Component {
 
         }
         axios.post("https://pro-organizer-974c5.firebaseio.com/database/-MD5-Op_Wfw6sEJgo8Yr/boards/.json",boardObj)
-
+        .then(()=>{
+            alert("board created");
+        })
+       
     }
+    
     render() { 
         return ( 
             <div className='form'>
@@ -33,7 +37,7 @@ class CreateBoardForm extends Component {
                 <label>Enter the type of your board</label><br/>
                 <input id='type' placeholder='e.g. Design Board' onChange={(e)=>this.setState({type:e.target.value})}></input><br/><br/>
 
-                <button id='createBoard' onClick={()=>this.createBoardHandler()}>Create</button>
+                <button id='CreateBoard' onClick={()=>this.createBoardHandler()}>create</button>
             </div>
           );
     }

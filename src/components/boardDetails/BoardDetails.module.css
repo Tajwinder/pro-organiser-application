@@ -1,20 +1,26 @@
 
-/* .inner-ul{
-    padding: 0;
+.boardDetails{
+    padding:  20px;
+    clear: both;
 }
-.inner-ul li{
-    background-color: white;
-    color: black;
-} */
 .boardName{
     color: blue;
-    font-size: 1.3em;
+    font-size: 1.8em;
+   float: left;
+    
 }
 #addColumn{
-    width:250px;
-    height: 250px;
-    background-color: white;
+    display: inline-block;
+    width:270px;
+    height: 210px;
+    background-color:white;
+    color: black;
     border: 2px dotted rgb(179, 176, 176);
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 23px;
+}
+.deleteBtn{
+    float: right;
+    background-color: rgb(250, 73, 73);
 }

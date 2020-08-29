@@ -1,17 +1,25 @@
 import React, {useState,useEffect} from 'react';
 import Axios from 'axios';
 import styles from './RenderCards.module.css'
-
+import {Droppable, Draggable} from 'react-beautiful-dnd';
+import CardDetails from './../cardDetails/CardDetails'
 const RenderCards=(props)=>{
 
   
    
     const [cards,addCards]=useState([])
-
-  
+    // const [dragCard,setDragCard]=useState(props.drag)
+    const [showCardDetails,setShowCardDetails]=useState(false);
+    const [cardId,setCardId]=useState('')
+    const handleCardDetails=(key)=>{
+      setCardId(key);
+      setShowCardDetails(true);
+    }
+   const hideCardDetailsHandler=()=>{
+       setShowCardDetails(false)
+   }
 
     
-
     useEffect(() => {
         let myarr=[];
         
@@ -39,48 +47,82 @@ const RenderCards=(props)=>{
          })
          return () => {
              console.log("returned from cards");
+             if(props.drag===true){
+                 props.handleDrag();
+             }
          }
-     }, [ props.boardId,props.columnId])
+     }, [props, props.boardId, props.columnId, props.drag])
 
      return (
-        <div>
-            <ul className={styles.cardsList} >
-            {
-                
-                
-                cards.map((obj)=>(
-                    <>
-                    <li className={styles.card}>
-                        {obj.title}<br/><br/>
-                        {/* {(obj['cards']===undefined)?null:(
-                            <ul className="inner-ul">
-                                {
-                                   Object.values(obj['cards']).map((newObj)=>(
-                                       <li>{newObj.title}</li>
-
-                                   )
-                                   )
-                                }
-                              
-                            </ul>
-                        )
+       <>
+         <CardDetails columnName={props.columnName} boardId={props.boardId} columnId={props.columnId}cardId={cardId} showCardDetails={showCardDetails} hideModel={hideCardDetailsHandler} />
+         <Droppable droppableId={props.columnId}>
+             {provided=>(
+             <div  
+             ref={provided.innerRef}
+             {...provided.droppableProps}
+             >
+             <ul className={styles.cardsList} 
+              
+             >
+             {
+          
+                 
+                 cards.map((obj,index)=>(
+                     <>
+                     <Draggable draggableId={obj.key} index={index}>
+                        {provided=>(
+                         <li id={styles.card}className={styles.card} onClick={()=>handleCardDetails(obj.key)}   
+                         ref={provided.innerRef} 
+                         {...provided.draggableProps}
+                         {...provided.dragHandleProps}
                         
-                        
-                    } */}
+                         >
+                            
+                           <div className={styles.cardName}> {obj.title}</div> 
+                            
+                             
+                                  <ul className={styles.cardMembers}>
+                                     {
+                                         obj.members?(
+                                        
+                                        obj['members'].map((newObj)=>(
+                                            <li className={styles.cardMember}>{newObj.substring(0,2)}</li>
+     
+                                        )
+                                        )
+                                         ):null
+                                     }
+                                   
+                                 </ul> 
+                             
+                             
+                             
+                         
+                                
+                            
                            
-                       
-                      
+     
+                         </li>
 
-                    </li>
+                         ) } 
                     
-                    </> 
-                ))
-
-            }
-            </ul>
-        </div>
+                     </Draggable>
+                     </> 
+                 ))
+ 
+             }
+            
+             </ul>
+             {provided.placeholder}
+         </div>
+      ) }
+        
+        </Droppable>
+        </>
     );
 
         }    
 
 export default RenderCards;
+

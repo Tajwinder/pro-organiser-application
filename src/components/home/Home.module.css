@@ -1,3 +1,7 @@
+.boards{
+   padding: 20px;
+   clear: both;
+}
 .board{
     /* padding: 30px 50px; */
    width:200px;
@@ -8,7 +12,7 @@
    border-radius: 5px;
    cursor: pointer;
    margin: 3px; 
-    box-shadow: 3px 3px 5px rgb(168, 167, 167);;
+    box-shadow: 3px 3px 5px rgb(168, 167, 167);
 }
 .board:hover{
     background-color: blue;
@@ -25,7 +29,4 @@ a{
     padding: 0;
     
 
-}
-.test{
-    color: blue;
 }

@@ -1,6 +1,6 @@
 import React ,{Component} from 'react'
 import axios from "axios";
-// import { NavLink } from 'react-router-dom';
+import './AddColumn.css'
 
 class AddColumn extends Component {
     constructor(props) {
@@ -16,20 +16,22 @@ class AddColumn extends Component {
            
             this.props.hideModel();
         })
-        // <NavLink to='./'></NavLink>
        
     }
     render() { 
         return (
-            <div>
-                <h3>Add Column</h3><br/>
+            <div className="modalContainer">
+                <div className="modalInnerContainer">
+                <div className="heading">Add Column</div><br/>
                 <div className='inputDiv'>
-                   <label>Enter team name</label>
-                   <input onChange={(e)=>{this.setState({
+                   <label>Enter a column name </label>
+                   <input id="column_name" type="text" onChange={(e)=>{this.setState({
                        columnName:e.target.value
                    })}}></input>
                 </div>
-                <button onClick={()=>this.addColumnHandler()}>Add Column </button> 
+                <button id="CreateColumn" onClick={()=>this.addColumnHandler()}>Add Column </button>
+                </div>
+                 
  
             </div>
           );

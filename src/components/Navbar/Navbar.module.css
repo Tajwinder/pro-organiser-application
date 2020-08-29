@@ -1,11 +1,14 @@
 .Navbar{
     background-color: blue;
-    /* padding: 20px; */
-    font-size: 1.2em;
+   
+    font-size: 1.5em;
+    
+    padding: 20px 0px;
 }
 .NavMenu{
     list-style: none;
     padding: 0;
+    margin: 0;
    display: flex;
     justify-content:flex-end;
     
@@ -17,15 +20,16 @@ margin-right: 20px;
 background-color: blue;
 
 }
-a{
+.menuItem a{
     color: white;
+
     text-decoration:none;
 }
 
 #companyLogo{
     
     float: left;
-    line-height: 3.5;
+    /* line-height: 3.5; */
     padding-left: 20px;
     color: white;
 }
