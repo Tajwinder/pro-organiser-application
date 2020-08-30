@@ -27,8 +27,7 @@ const RenderCards=(props)=>{
        
          Axios.get(`https://pro-organizer-974c5.firebaseio.com/database/-MD5-Op_Wfw6sEJgo8Yr/boards/${props.boardId}/columns/${props.columnId}/cards.json`)
          .then(response=>{
-             console.log("from Cards.js")
-             console.log(response.data)
+           
              if(response.data){
                  const keys = Object.keys(response.data);
                  // iterate over object
@@ -51,11 +50,12 @@ const RenderCards=(props)=>{
                  props.handleDrag();
              }
          }
-     }, [props, props.boardId, props.columnId, props.drag])
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+     }, [ props.boardId, props.columnId, props.drag])
 
      return (
        <>
-         <CardDetails columnName={props.columnName} boardId={props.boardId} columnId={props.columnId}cardId={cardId} showCardDetails={showCardDetails} hideModel={hideCardDetailsHandler} />
+         <CardDetails columnName={props.columnName} boardId={props.boardId} columnId={props.columnId} cardId={cardId} showCardDetails={showCardDetails} hideModel={hideCardDetailsHandler} />
          <Droppable droppableId={props.columnId}>
              {provided=>(
              <div  
@@ -67,12 +67,12 @@ const RenderCards=(props)=>{
              >
              {
           
-                 
+                 cards.length?( 
                  cards.map((obj,index)=>(
-                     <>
-                     <Draggable draggableId={obj.key} index={index}>
+                     < >
+                     <Draggable key={index} draggableId={obj.key} index={index}>
                         {provided=>(
-                         <li id={styles.card}className={styles.card} onClick={()=>handleCardDetails(obj.key)}   
+                         <li key={index} id={styles.card} className={styles.card} onClick={()=>handleCardDetails(obj.key)}   
                          ref={provided.innerRef} 
                          {...provided.draggableProps}
                          {...provided.dragHandleProps}
@@ -87,7 +87,7 @@ const RenderCards=(props)=>{
                                          obj.members?(
                                         
                                         obj['members'].map((newObj)=>(
-                                            <li className={styles.cardMember}>{newObj.substring(0,2)}</li>
+                                            <li key={index} className={styles.cardMember}>{newObj.substring(0,2)}</li>
      
                                         )
                                         )
@@ -110,6 +110,7 @@ const RenderCards=(props)=>{
                      </Draggable>
                      </> 
                  ))
+                 ):<div>No tasks added</div>
  
              }
             

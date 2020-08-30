@@ -18,7 +18,7 @@ class AddCardModel extends Component {
      getSelectedOption(sel) {
         let selectedOpt=[];
         let opt;
-        for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+        for ( let i = 0, len = sel.options.length; i < len; i++ ) {
             opt = sel.options[i];
             if ( opt.selected === true ) {
                 selectedOpt.push(opt)
@@ -29,6 +29,7 @@ class AddCardModel extends Component {
     
     
      getInitials(member){
+        
         let newName=member.split(" ").map((n)=>n[0].toUpperCase()).join("")+"-"+member;
         return newName;
      }

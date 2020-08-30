@@ -80,8 +80,7 @@ const onDragEnd=result=>{
          
          Axios.get(`https://pro-organizer-974c5.firebaseio.com/database/-MD5-Op_Wfw6sEJgo8Yr/boards/${props.boardId}/columns.json`)
          .then(response=>{
-             console.log("from Columns.js")
-             console.log(response.data)
+             
              if(response.data){
                  const keys = Object.keys(response.data);
                  // iterate over object
@@ -112,15 +111,15 @@ const onDragEnd=result=>{
             
 
      <div >
-         <ul style={{float:"left"}}>
+         <ul style={{float:"left"}} className={styles.columnList}>
          {
              
             
-             columns.map((obj)=>(
+             columns.map((obj,key)=>(
                  
                  <>
                 
-                 <li id={obj.key} className={styles.column} >
+                 <li key={key} id={obj.key} className={styles.column} >
 
                      <div className={styles.columnName}>{obj.name}</div>
                      {/* <Droppable > */}
@@ -148,15 +147,15 @@ const onDragEnd=result=>{
             
 
         <div >
-            <ul style={{float:"left"}}>
+            <ul style={{float:"left"}} className={styles.columnList}>
             {
                 
                
-                columns.map((obj)=>(
+                columns.map((obj,key)=>(
                     
                     <>
                    
-                    <li id={obj.key} className={styles.column} >
+                    <li key={key} id={obj.key} className={styles.column} >
 
                         <div className={styles.columnName}>{obj.name}</div>
                         {/* <Droppable > */}

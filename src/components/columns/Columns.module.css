@@ -1,10 +1,13 @@
+.columnList{
+    clear: both;
+}
 .column{
     width:260px;
     border-radius: 5px;
     margin:10px;
     margin-left: 0px;
     padding: 10px;
-    
+    clear: both;
 }
 .columnName{
     font-size: 1.5em;
