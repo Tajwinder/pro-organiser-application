@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import './CreateBoardform.css'
 import axios from 'axios';
+import {withRouter} from  'react-router-dom'
 class CreateBoardForm extends Component {
     constructor(props) {
         super(props);
@@ -10,6 +11,7 @@ class CreateBoardForm extends Component {
             type:''
          }
     }
+   
     createBoardHandler(){
         let boardObj={
             name:this.state.boardName,
@@ -19,7 +21,7 @@ class CreateBoardForm extends Component {
         }
         axios.post("https://pro-organizer-974c5.firebaseio.com/database/-MD5-Op_Wfw6sEJgo8Yr/boards/.json",boardObj)
         .then(()=>{
-           
+            this.props.history.push("/");
         })
        
     }
@@ -43,4 +45,4 @@ class CreateBoardForm extends Component {
     }
 }
  
-export default CreateBoardForm ;
+export default withRouter(CreateBoardForm ) ;
