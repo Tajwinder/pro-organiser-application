@@ -54,7 +54,7 @@ const BoardDetails=(props)=>{
         <div className="heading" >{boardName}</div> 
            
         <Columns boardId={props.boardId}/>
-        <button id={styles.addColumn} onClick={()=>showAddColumn(true)}>add column</button>
+        <button id={styles.addColumn} onClick={()=>showAddColumn(true)}>Add a Column</button>
         </div>
         </>
         )
