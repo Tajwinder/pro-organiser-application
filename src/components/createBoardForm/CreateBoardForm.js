@@ -19,7 +19,7 @@ class CreateBoardForm extends Component {
         }
         axios.post("https://pro-organizer-974c5.firebaseio.com/database/-MD5-Op_Wfw6sEJgo8Yr/boards/.json",boardObj)
         .then(()=>{
-            alert("board created");
+           
         })
        
     }

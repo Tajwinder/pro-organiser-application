@@ -16,7 +16,7 @@ const BoardDetails=(props)=>{
     const deleteBoardHandler=()=>{
         Axios.delete(`https://pro-organizer-974c5.firebaseio.com/database/-MD5-Op_Wfw6sEJgo8Yr/boards/${props.boardId}/.json`)
         .then(()=>{
-            alert("board deleted successfully")
+           
             props.hideDetails();
         })
        
@@ -63,7 +63,7 @@ const BoardDetails=(props)=>{
          <div className={styles.boardName}>{boardName}</div> 
          <button className={styles.deleteBtn} onClick={()=>deleteBoardHandler()}>Delete Board</button>   
          <Columns boardId={props.boardId}/>
-         <button id={styles.addColumn} onClick={()=>showAddColumn(true)}>add column</button>
+         <button id={styles.addColumn} onClick={()=>showAddColumn(true)}>Add a Column</button>
          </div>
         )
 }
