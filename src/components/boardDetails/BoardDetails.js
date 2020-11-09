@@ -53,4 +53,3 @@ const BoardDetails=(props)=>{
 }
  
 export default BoardDetails;
-
