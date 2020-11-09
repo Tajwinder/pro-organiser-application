@@ -31,8 +31,6 @@ class AddColumn extends Component {
                 </div>
                 <button id="CreateColumn" onClick={()=>this.addColumnHandler()}>Add Column </button>
                 </div>
-                 
- 
             </div>
           );
     }

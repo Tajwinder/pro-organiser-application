@@ -82,17 +82,13 @@ const onDragEnd=result=>{
          .then(response=>{
              
              if(response.data){
-                 const keys = Object.keys(response.data);
-                 // iterate over object
-                 keys.forEach((key, index) => {
-                     value=response.data[key];
-                   
-                     value['key']=key; 
+                Object.keys(response.data).map((key)=>{
+                    value=response.data[key];
                     
-                     myarr.push(value)
-                  
-                
-                 });
+                        value['key']=key;
+                       
+                        myarr.push(value)
+                })
                 
                  setAddNewColumn([...myarr])
 
@@ -104,9 +100,9 @@ const onDragEnd=result=>{
          }
      }, [ props.boardId])
 
-     return addCard?
+     return(
      <>
-     <AddCardModel boardId={props.boardId} columnId={columnId} hideModel={hideAddCardHandler} />
+     {addCard && <AddCardModel boardId={props.boardId} columnId={columnId} hideModel={hideAddCardHandler} />}
      <DragDropContext onDragEnd={(result)=>onDragEnd(result)}>
             
 
@@ -142,42 +138,7 @@ const onDragEnd=result=>{
      </div>
      </DragDropContext>
      </>
-     :(
-        <DragDropContext onDragEnd={(result)=>onDragEnd(result)}>
-            
-
-        <div >
-            <ul style={{float:"left"}} className={styles.columnList}>
-            {
-                
-               
-                columns.map((obj,key)=>(
-                    
-                    <>
-                   
-                    <li key={key} id={obj.key} className={styles.column} >
-
-                        <div className={styles.columnName}>{obj.name}</div>
-                        {/* <Droppable > */}
-                       
-                        <RenderCards boardId={props.boardId} columnName={obj.name} columnId={obj.key} drag={drag} handleDrag={handleDrag}/>
-                      
-                           
-                       
-                        <div className={styles.addCard} onClick={()=>addCardHandler(obj.key)}>Add a card</div>
-                        {/* </Droppable> */}
-
-                    </li>
-                    
-                    </> 
-                ))
-               
-            }
-            
-            </ul>
-        </div>
-        </DragDropContext>
-    );
+     )
 
         }    
 

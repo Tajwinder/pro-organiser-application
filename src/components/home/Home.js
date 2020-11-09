@@ -17,8 +17,8 @@ this.setState({boardDetails:false})
   }
    
     render() { 
-        
-        return this.state.boardDetails?<BoardDetails boardId={this.state.boardId} hideDetails={this.returnHome}></BoardDetails>:( 
+       
+        return this.state.boardDetails?<BoardDetails boardId={this.state.boardId} hideDetails={this.returnHome}/>:( 
             <div className={styles.boards}>
                 <div className="heading">Boards</div>
                 {
@@ -26,9 +26,9 @@ this.setState({boardDetails:false})
                      </div>:(
                         <ul className={styles.boardsList}>
                         { this.state.boards.map(
-                            (obj,key)=>(
+                            (obj)=>(
                                 // console.log(obj)
-                                <li key={key} className={styles.board}
+                                <li key={obj.key} className={styles.board}
                                    onClick={()=>this.setState({boardDetails:true, boardId:obj.key})}>{obj.name}
                                     </li>
                             )
@@ -44,21 +44,20 @@ this.setState({boardDetails:false})
          );
     }
     componentDidMount(){
+        console.log("didMount")
         let myarr=[];
         let value;
         axios.get("https://pro-organizer-974c5.firebaseio.com/database/-MD5-Op_Wfw6sEJgo8Yr/boards.json")
             .then(response=>{
                 
                 if(response.data){
-                    const keys = Object.keys(response.data);
-                    // iterate over object
-                    keys.forEach((key, index) => {
+                    Object.keys(response.data).map((key)=>{
                         value=response.data[key];
-                        value['key']=key;
-                       
-                        myarr.push(value)
-                   
-                    });
+                        
+                            value['key']=key;
+                           
+                            myarr.push(value)
+                    })
                     this.setState({
                         boards:[...myarr]
                     })
@@ -67,28 +66,7 @@ this.setState({boardDetails:false})
            
     }
 
-    componentDidUpdate(){
-        let myarr=[];
-        let value;
-        axios.get("https://pro-organizer-974c5.firebaseio.com/database/-MD5-Op_Wfw6sEJgo8Yr/boards.json")
-            .then(response=>{
-                
-                if(response.data){
-                    const keys = Object.keys(response.data);
-                    // iterate over object
-                    keys.forEach((key, index) => {
-                        value=response.data[key];
-                        value['key']=key;
-                       
-                        myarr.push(value)
-                   
-                    });
-                    this.setState({
-                        boards:[...myarr]
-                    })
-                }
-            })
-    }
+   
 }
  
 export default Home;
